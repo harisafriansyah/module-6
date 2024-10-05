@@ -1,1 +1,33 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/NzT-foTZ)
+# Zoo Management API
+
+## Overview
+
+The Zoo Management API allows you to manage animals, employees, feeding schedules, and generate reports in the zoo.
+
+### Base URL
+
+`https://`
+
+### Authentication
+
+None required.
+
+---
+
+## Endpoints
+
+### Animals
+
+#### Add an Animal
+
+- **URL**: `/animals`
+- **Method**: `POST`
+- **Request Body**:
+  ```json
+  {
+    "species": "Elephant",
+    "age": 10,
+    "gender": "Female",
+    "special_requirements": "Water nearby"
+  }
+  ```
