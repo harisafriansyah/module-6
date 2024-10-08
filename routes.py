@@ -5,7 +5,9 @@ from datetime import datetime
 
 api = Blueprint('api', __name__)
 
-# POST /animals: Add a new animal
+# Animal Management
+
+# POST /animals: Add a new animal to the zoo
 @api.route('/animals', methods=['POST'])
 def add_animal():
     data = request.get_json()
@@ -19,7 +21,7 @@ def add_animal():
     db.session.commit()
     return jsonify({'id': new_animal.id}), 201
 
-# GET /animals: Retrieve a list of animals
+# GET /animals: Retrieve a list of all animals in the zoo
 @api.route('/animals', methods=['GET'])
 def get_animals():
     animals = Animal.query.all()
@@ -31,6 +33,7 @@ def get_animals():
         'special_requirements': animal.special_requirements
     } for animal in animals]), 200
 
+# GET /animals/<id>: Retrieve a specific animal by its id
 @api.route('/animals/<int:id>', methods=['GET'])
 def get_animal(id):
     animal = db.session.get(Animal, id)
@@ -45,11 +48,87 @@ def get_animal(id):
         'special_requirements': animal.special_requirements
     }), 200
 
-# GET /employees: Retrieve a list of employees
+# PUT /animals/<id>: Update an existing animal by its id
+@api.route('/animals/<int:id>', methods=['PUT'])
+def update_animal(id):
+    animal = Animal.query.get_or_404(id)
+    data = request.get_json()
+
+    animal.species = data['species']
+    animal.age = data['age']
+    animal.gender = data['gender']
+    animal.special_requirements = data.get('special_requirements', '')
+
+    db.session.commit()
+    return jsonify({
+        'id': animal.id,
+        'species': animal.species,
+        'age': animal.age,
+        'gender': animal.gender,
+        'special_requirements': animal.special_requirements
+    }), 200
+
+# DELETE /animals/<id>: Delete an existing animal by its id
+@api.route('/animals/<int:id>', methods=['DELETE'])
+def delete_animal(id):
+    animal = Animal.query.get_or_404(id)
+    db.session.delete(animal)
+    db.session.commit()
+    return jsonify({'message': 'Animal deleted'}), 200
+
+# Employee Management
+
+# POST /employees: Add a new employee to the zoo
+@api.route('/employees', methods=['POST'])
+def add_employee():
+    data = request.get_json()
+    new_employee = Employee(
+        name=data['name'],
+        email=data['email'],
+        phone_number=data.get('phone_number'),
+        role=data.get('role'),
+        schedule=data.get('schedule')
+    )
+    db.session.add(new_employee)
+    db.session.commit()
+    return jsonify({'id': new_employee.id}), 201
+
+# GET /employees: Retrieve a list of all employees in the zoo
 @api.route('/employees', methods=['GET'])
 def get_employees():
     employees = Employee.query.all()
     return jsonify([employee.serialize() for employee in employees]), 200
+
+# GET /employees/<id>: Retrieve a specific employee by their id
+@api.route('/employees/<int:id>', methods=['GET'])
+def get_employee(id):
+    employee = Employee.query.get_or_404(id)
+    return jsonify(employee.serialize()), 200
+
+# PUT /employees/<id>: Update an existing employee by their id
+@api.route('/employees/<int:id>', methods=['PUT'])
+def update_employee(id):
+    employee = Employee.query.get_or_404(id)
+    data = request.get_json()
+
+    employee.name = data['name']
+    employee.email = data['email']
+    employee.phone_number = data.get('phone_number', employee.phone_number)
+    employee.role = data.get('role', employee.role)
+    employee.schedule = data.get('schedule', employee.schedule)
+
+    db.session.commit()
+    return jsonify(employee.serialize()), 200
+
+# DELETE /employees/<id>: Delete an existing employee by their id
+@api.route('/employees/<int:id>', methods=['DELETE'])
+def delete_employee(id):
+    employee = Employee.query.get_or_404(id)
+    db.session.delete(employee)
+    db.session.commit()
+    return jsonify({'message': 'Employee deleted'}), 200
+
+#Feeding Schedules
 
 # GET /feedings: Retrieve all feeding schedules
 @api.route('/feedings', methods=['GET'])

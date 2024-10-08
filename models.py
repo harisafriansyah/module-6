@@ -16,6 +16,16 @@ class Employee(db.Model):
     role = db.Column(db.String(50))
     schedule = db.Column(db.Text)
 
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'email': self.email,
+            'phone_number': self.phone_number,
+            'role': self.role,
+            'schedule': self.schedule
+        }
+
 class FeedingSchedule(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
@@ -23,4 +33,14 @@ class FeedingSchedule(db.Model):
     food_type = db.Column(db.String(100), nullable=False)
     feeding_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
+    # Establish a relationship with the Animal model
     animal = db.relationship('Animal', backref=db.backref('feeding_schedules', lazy=True))
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'animal_id': self.animal_id,
+            'enclosure_id': self.enclosure_id,
+            'food_type': self.food_type,
+            'feeding_time': self.feeding_time.isoformat()  # Convert datetime to ISO format
+        }
