@@ -42,7 +42,48 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "/animals (Add an Animal)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"species\": \"Tiger\",\r\n  \"age\": 3,\r\n  \"gender\": \"Male\",\r\n  \"special_requirements\": \"Big space\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/animals",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"animals"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n  \"id\": 2\n}\n"
+				}
+			]
 		},
 		{
 			"name": "/animals (Get All Animals)",
@@ -76,7 +117,42 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "/animals (Get All Animals)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/animals",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"animals"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "[\n  {\n    \"id\": 1,\n    \"species\": \"Elephant\",\n    \"age\": 10,\n    \"gender\": \"Female\",\n    \"special_requirements\": \"Water nearby\"\n  }\n]\n"
+				}
+			]
 		},
 		{
 			"name": "/animals/{id} (Get an Animal by ID)",
@@ -111,7 +187,43 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "/animals/{id} (Get an Animal by ID)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/animals/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"animals",
+								"1"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n  \"id\": 1,\n  \"species\": \"Elephant\",\n  \"age\": 10,\n  \"gender\": \"Female\",\n  \"special_requirements\": \"Water nearby\"\n}\n"
+				}
+			]
 		},
 		{
 			"name": "/animals",
@@ -143,7 +255,43 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "/animals",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"species\": \"Elephant\",\r\n  \"age\": 12,\r\n  \"gender\": \"Female\",\r\n  \"special_requirements\": \"Requires large water source\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/animals/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"animals",
+								"3"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n  \"id\": 1,\n  \"species\": \"Elephant\",\n  \"age\": 12,\n  \"gender\": \"Female\",\n  \"special_requirements\": \"Requires large water source\"\n}\n"
+				}
+			]
 		},
 		{
 			"name": "/animals",
@@ -166,7 +314,34 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "/animals",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/animals/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"animals",
+								"3"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n  \"message\": \"Animal deleted\"\r\n}\r\n"
+				}
+			]
 		},
 		{
 			"name": "/employees (Add Employees)",
@@ -175,7 +350,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"John Smith\",\r\n  \"email\": \"johnsmith@example.com\",\r\n  \"phone_number\": \"555-555-9876\",\r\n  \"role\": \"Senior Zookeeper\",\r\n  \"schedule\": \"Mon-Fri\"\r\n}\r\n",
+					"raw": "{\r\n  \"name\": \"Jane Doe\",\r\n  \"email\": \"jane@example.com\",\r\n  \"phone_number\": \"555-555-1234\",\r\n  \"role\": \"Veterinarian\",\r\n  \"schedule\": \"Mon-Wed\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -197,7 +372,42 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "/employees (Add Employees)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jane Doe\",\r\n  \"email\": \"jane@example.com\",\r\n  \"phone_number\": \"555-555-1234\",\r\n  \"role\": \"Veterinarian\",\r\n  \"schedule\": \"Mon-Wed\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/employees",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n  \"id\": 2\r\n}\r\n"
+				}
+			]
 		},
 		{
 			"name": "/employees (Get All Employees)",
@@ -219,7 +429,83 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "/employees (Get All Employees)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/employees",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "[\r\n  {\r\n    \"id\": 1,\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john@example.com\",\r\n    \"phone_number\": \"555-555-5555\",\r\n    \"role\": \"Zookeeper\",\r\n    \"schedule\": \"Mon-Fri\"\r\n  }\r\n]\r\n"
+				}
+			]
+		},
+		{
+			"name": "/employees (Get All Employees by ID)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/employees/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/employees (Get All Employees by ID)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/employees/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								"1"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "[\r\n  {\r\n    \"id\": 1,\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john@example.com\",\r\n    \"phone_number\": \"555-555-5555\",\r\n    \"role\": \"Zookeeper\",\r\n    \"schedule\": \"Mon-Fri\"\r\n  }\r\n]\r\n"
+				}
+			]
 		},
 		{
 			"name": "/employees",
@@ -251,7 +537,43 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "/employees",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"John Smith\",\r\n  \"email\": \"johnsmith@example.com\",\r\n  \"phone_number\": \"555-555-9876\",\r\n  \"role\": \"Senior Zookeeper\",\r\n  \"schedule\": \"Mon-Fri\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/employees/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								"4"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n  \"id\": 1,\r\n  \"name\": \"John Smith\",\r\n  \"email\": \"johnsmith@example.com\",\r\n  \"phone_number\": \"555-555-9876\",\r\n  \"role\": \"Senior Zookeeper\",\r\n  \"schedule\": \"Mon-Fri\"\r\n}\r\n"
+				}
+			]
 		},
 		{
 			"name": "/employees",
@@ -274,7 +596,34 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "/employees",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/employees/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"employees",
+								"4"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n  \"message\": \"Employee deleted\"\r\n}\r\n"
+				}
+			]
 		},
 		{
 			"name": "/feedings (Add a Feeding Schedule)",

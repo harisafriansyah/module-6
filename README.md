@@ -6,7 +6,7 @@ The Zoo Management API allows you to manage animals, employees, feeding schedule
 
 ### Base URL
 
-`https://`
+`https://www.postman.com/technical-participant-73583793/zoo/documentation/hcywjhz/zoo-management-api`
 
 ### Authentication
 
