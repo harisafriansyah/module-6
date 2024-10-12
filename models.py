@@ -3,11 +3,11 @@ from datetime import datetime
 
 class Animal(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    species = db.Column(db.String(80), nullable=False)
+    species = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
     gender = db.Column(db.String(10), nullable=False)
-    special_requirements = db.Column(db.String(200), nullable=True)
-
+    special_requirements = db.Column(db.String(255))
+    
 class Employee(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
