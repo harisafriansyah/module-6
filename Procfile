@@ -1,1 +1,1 @@
-web: poetry run flask run --host=0.0.0.0 --port=$PORT
+web: curl -sSL https://install.python-poetry.org | python3 - && poetry install && poetry run flask run --host=0.0.0.0 --port=$PORT
