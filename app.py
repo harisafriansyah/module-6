@@ -1,29 +1,31 @@
 from flask import Flask
-from extensions import db 
-from models import Animal, Employee, FeedingSchedule
-from routes import api 
 from flask_migrate import Migrate
-
-migrate = Migrate()
+from extensions import db
+from routes.animal_routes import animal_bp
+from routes.employee_routes import employee_bp
+from routes.feeding_routes import feeding_bp
+from routes.report_routes import report_bp
 
 def create_app(config_class='config.Config'):
     app = Flask(__name__)
+    
+    # Load the configuration from the provided config class
     app.config.from_object(config_class)
     
-    # Initialize the database with the app
+    # Initialize database with app
     db.init_app(app)
-    migrate.init_app(app, db)  # Connect migrations with the app and db
-
-    # Register the blueprint for routes
-    app.register_blueprint(api, url_prefix='/')
-
-    # Ensure that everything is connected in the app context
-    with app.app_context():
-        db.create_all()  # Create tables if they don't exist
+    
+    # Initialize Flask-Migrate for database migrations
+    migrate = Migrate(app, db)
+    
+    # Register blueprints
+    app.register_blueprint(animal_bp, url_prefix='/')
+    app.register_blueprint(employee_bp, url_prefix='/')
+    app.register_blueprint(feeding_bp, url_prefix='/')
+    app.register_blueprint(report_bp, url_prefix='/')
 
     return app
 
-# Run the Flask app
 if __name__ == '__main__':
     app = create_app()
     app.run(debug=True)

@@ -1,5 +1,6 @@
 import pytest
 from app import create_app, db
+from models import Animal
 
 @pytest.fixture
 def app():
@@ -11,7 +12,7 @@ def app():
     })
 
     with app.app_context():
-        db.create_all()  # Setup the database
+        db.create_all()
         yield app
         db.session.remove()  # Clean up the session
         db.drop_all()  # Teardown the database
@@ -23,3 +24,12 @@ def client(app):
 @pytest.fixture
 def runner(app):
     return app.test_cli_runner()
+
+@pytest.fixture
+def init_database(app):
+    with app.app_context():
+        animal = Animal(species="Tiger", age=5, gender="Male", special_requirements="Carnivore")
+        db.session.add(animal)
+        db.session.commit()
+        yield db
+        db.drop_all()
