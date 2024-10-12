@@ -5,9 +5,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
-    print(f"Database URL: {SQLALCHEMY_DATABASE_URI}")
-
+    # Create the SQLAlchemy database URI
+    SQLALCHEMY_DATABASE_URI = (
+        f"postgresql://{os.getenv('DBUSERNAME')}:{os.getenv('DBPASSWORD')}"
+        f"@{os.getenv('HOSTNAME')}:{os.getenv('DBPORT')}/{os.getenv('DATABASNAME')}"
+    )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class TestingConfig(Config):

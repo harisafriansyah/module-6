@@ -20,7 +20,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"species\": \"Tiger\",\r\n  \"age\": 3,\r\n  \"gender\": \"Male\",\r\n  \"special_requirements\": \"Big space\"\r\n}\r\n",
+					"raw": "{\r\n  \"species\": \"Lion\",\r\n  \"age\": 5,\r\n  \"gender\": \"Male\",\r\n  \"special_requirements\": \"Large enclosure\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -638,7 +638,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"animal_id\": 1,\r\n    \"enclosure_id\": 2,\r\n    \"food_type\": \"Grass\",\r\n    \"feeding_time\": \"2024-10-01T08:00:00\"\r\n}",
+					"raw": "{\r\n  \"animal_id\": 1,\r\n  \"enclosure_id\": 2,\r\n  \"food_type\": \"Meat\",\r\n  \"feeding_time\": \"2024-10-01T14:00:00\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -657,6 +657,74 @@
 					"port": "5000",
 					"path": [
 						"feedings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/feedings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/feedings",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"feedings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reports/animals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/reports/animals",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"reports",
+						"animals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reports/visitors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/reports/visitors",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"reports",
+						"visitors"
 					]
 				}
 			},

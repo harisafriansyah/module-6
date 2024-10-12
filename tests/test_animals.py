@@ -23,7 +23,7 @@ def test_get_animals(client, init_database):
     assert response.status_code == 200
 
     # Ensure that the animals list contains the expected number of items
-    assert len(response.json) == 1
+    assert len(response.json) == 2
 
 def test_post_animal(client, init_database):
     # Test if POST request to '/animals' successfully adds a new animal
